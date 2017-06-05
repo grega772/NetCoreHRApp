@@ -1,0 +1,129 @@
+﻿<!--<html>
+<head>
+    <title>Users</title>
+    <meta name="viewport" content="width=device-width"/>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/js/site.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</head>
+<body class="panel-body"></body>
+</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HR Application</title>
+    <meta charset="UTF-8">
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/js/site.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+</head>
+<style>
+
+    body {
+        font-size: 16px;
+    }
+
+    .w3-half img {
+        margin-bottom: -6px;
+        margin-top: 16px;
+        opacity: 0.8;
+        cursor: pointer
+    }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+</style>
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>1-Stop<br>Connections</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a asp-controller="Account" asp-action="Logout" class="w3-bar-item w3-button w3-hover-white">Logout</a>
+            <a asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button w3-hover-white">Profile</a>
+            <a asp-controller="UserFunctions" asp-action="ResetPassword" class="w3-bar-item w3-button w3-hover-white">Change Password</a>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="RoleAdmin" asp-action="Index" class="w3-bar-item w3-button w3-hover-white">Administer Roles</a>
+                <a asp-controller="Admin" asp-action="Index" class="w3-bar-item w3-button w3-hover-white">Administer Accounts</a>
+            }
+            @if (!User.IsInRole("User"))
+            {
+                <a asp-controller="Admin" asp-action="ManageUsers" class="w3-bar-item w3-button w3-hover-white">Manage Users</a>
+            }
+
+            <!--
+            <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a>
+            <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a>
+            <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Packages</a>
+            <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>-->
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">â˜°</a>
+        <span>1-Stop Connections</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+        
+        <!-- Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-jumbo"><b>HR Application</b></h1>
+            <h1 class="w3-xxxlarge w3-text-red"><b><!--SubHeading--></b></h1>
+        </div>
+
+        <!-- Services -->
+        <div class="w3-container" id="services" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-red"><b>@ViewBag.Title</b></h1>
+            <hr style="width:50px;border:5px solid red" class="w3-round">
+            @RenderBody()
+        </div>
+
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+
+</body>
+</html>

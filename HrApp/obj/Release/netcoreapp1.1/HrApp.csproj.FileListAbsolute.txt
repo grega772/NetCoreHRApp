@@ -1,0 +1,9 @@
+C:\projects\HrApp\HrApp\bin\Release\netcoreapp1.1\HrApp.deps.json
+C:\projects\HrApp\HrApp\bin\Release\netcoreapp1.1\HrApp.runtimeconfig.json
+C:\projects\HrApp\HrApp\bin\Release\netcoreapp1.1\HrApp.runtimeconfig.dev.json
+C:\projects\HrApp\HrApp\bin\Release\netcoreapp1.1\HrApp.dll
+C:\projects\HrApp\HrApp\bin\Release\netcoreapp1.1\HrApp.pdb
+C:\projects\HrApp\HrApp\obj\Release\netcoreapp1.1\HrApp.AssemblyInfo.cs
+C:\projects\HrApp\HrApp\obj\Release\netcoreapp1.1\HrApp.dll
+C:\projects\HrApp\HrApp\obj\Release\netcoreapp1.1\HrApp.pdb
+C:\projects\HrApp\HrApp\obj\Release\netcoreapp1.1\HrApp.csprojResolveAssemblyReference.cache

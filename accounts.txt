@@ -1,0 +1,7 @@
+Admin:
+admin@1-stop.biz
+password1234
+
+End User:
+test@1-stop.biz
+password123

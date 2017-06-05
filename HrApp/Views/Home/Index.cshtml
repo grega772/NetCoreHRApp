@@ -1,0 +1,89 @@
+﻿
+@model HrApp.Models.AppUser
+
+<div class="text-center">
+<div class="container container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@Model.FirstName  @Model.LastName</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            <form id="picturesubmit" enctype="multipart/form-data" method="post"asp-action="UploadPicture">
+                                <input id="upload" type="file" name="files" />
+                                <a href="" id="upload_link" title="Change profile picture">
+                                    @if (Model.ProfilePictureLink!=null)
+                                            {
+                                                var imagePath = Model.ProfilePictureLink.Split('\\').Last();
+                                                imagePath = "/images/"+Model.UserName + "/" + imagePath;
+                                        <img alt="User Pic" src="@imagePath" class="img-circle img-responsive">
+                                    }
+                                    else
+                                    {
+                                        <img alt="User Pic" src="~/images/thing.png" class="img-circle img-responsive">
+                                    }
+
+                                </a>
+                                <button id="submitPicture" style="display:none" type="submit"/>
+                            </form>
+                        </div>
+                        <script>
+                            $(function () {
+                                $("#upload_link").on('click', function (e) {
+                                    e.preventDefault();
+                                    $("#upload:hidden").trigger('click');
+                                });
+                            });
+                        </script>
+                        <script>
+                            $(function () {
+                                $("#upload").change(function (f) {
+                                    $('#picturesubmit').submit();
+                                });
+                            });
+                        </script>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Job Title:</td>
+                                        <td>@Model.JobTitle</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date of Birth</td>
+                                        <td>@Model.DateOfBirth.Day/@Model.DateOfBirth.Month/@Model.DateOfBirth.Year</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>@Model.Email</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-danger">@ViewBag.FileMessage</p>
+                    <label class="control-label">Upload CV</label>
+                    <form method="post" enctype="multipart/form-data" asp-action="Index" class="form-group-lg">
+                        <div class="form-control"style="border:none">
+                            <input type="file" name="files" multiple class="" style="margin-top:-1%"/>
+                        </div>
+                        <div class="form-control" style="border:none">
+                            <input type="submit" value="Upload" class="btn btn-primary" style="margin-top:-1%" />
+                            <button asp-controller="Home" asp-action="DownloadFile" class="btn btn-primary" style="margin-top:-1%"> Download CV</button>
+                        </div>
+                    </form>
+                </div>
+                <!--Bottom of the box-->
+            </div>
+        </div>
+    </div>
+</div>
+ </div>
+
+
+

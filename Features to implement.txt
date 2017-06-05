@@ -1,0 +1,20 @@
+-	Allowing users to Upload Cv / Download Cv (IMPLEMENTED)
+
+-	Can change profile picture (IMPLEMENTED)
+
+-	Cannot delete admin Role (IMPLEMENTED)
+
+- Cannot delete SuperAdmin account (IMPLEMENTED)
+
+-	After role type is added, users can be assigned under the role (IMPLEMENTED)
+
+-	Admin has all users automatically assigned under them (IMPLEMENTED)
+
+-	When a user has other users of them, the can view all the information contained within their profile (IMPLEMENTED)
+
+
+
+-	Users in roles with users under them can assign users a training plan, which the end user can view (Big job)
+
+-	Adding competencies to profiles for performance reviews (Big job)
+

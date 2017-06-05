@@ -1,0 +1,12 @@
+﻿@model AppUser 
+
+<p>@Model.UserName</p>
+<p>@Model.Email</p>
+<p>@Model.Id</p>
+<p>@Model.FirstName</p>
+<p>@Model.LastName</p>
+<p>@Model.JobTitle</p>
+@foreach (var role in @Model.Roles.ToList())
+{
+    <p>@role.ToString()</p>
+}

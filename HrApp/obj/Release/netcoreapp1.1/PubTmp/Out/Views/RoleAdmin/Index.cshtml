@@ -1,0 +1,58 @@
+﻿
+
+@model List<IdentityRole>
+
+
+
+
+<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+<div class="text-center text-danger">@ViewBag.ErrorMessage</div>
+<table class="table table-condensed table-bordered table-bordered">
+    <tr><th></th><th>Role</th><th>Users</th><th>Functions</th></tr>
+    @if (Model.Count() == 0)
+    {
+        <tr><td colspan="4" class="text-center">No Roles</td></tr>
+    }
+    else
+    {
+            foreach (var role in Model.ToList())
+            {
+            @if (!role.Name.Equals("User"))
+            {
+
+                <tr class="container">
+                    
+                    <td>@role.Name</td>
+                    <td identity-role="@role.Id"></td>
+                    <td>
+                        @if (role.Name != "Admin")
+                        {
+                            <form asp-action="Delete" asp-route-id="@role.Id" method="post" id="deleteRole @role.Id">
+                                <a onclick="ConfirmRoleDeletion('@role.Id','@role.Name',this)" 
+                                   class="btn btn-sm btn-danger">Delete</a>
+                                <a class="btn btn-sm btn-primary" asp-action="AddUsersUnderRole"
+                                   asp-route-id="@role.Id">Mofify users under role</a>
+                                <a class="btn btn-sm btn-primary" asp-action="Edit"
+                                   asp-route-id="@role.Id">Modify users in role</a>
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="btn btn-sm btn-primary" asp-action="Edit"
+                               asp-route-id="@role.Id">Modify users in role</a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>
+<script>
+    function ConfirmRoleDeletion(id,name,object) {
+        var confirmation = window.confirm("Delete this role : "+name);
+        if (confirmation) {
+            document.getElementById("deleteRole "+id).submit();
+        }
+    }
+</script>
+<a class="btn btn-primary" asp-action="Create">Create</a> 
